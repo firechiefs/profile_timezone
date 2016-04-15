@@ -1,0 +1,19 @@
+<%- | String $success_color, String $error_color, String $validation_data | -%>
+# make sure to type $validation_data above
+# --> String $validation_data
+
+# variables passed in via profile::timezone
+$ConsoleSuccess  = "<%= $success_color %>"
+$ConsoleError    = "<%= $error_color %>"
+$CorrectTimeZone = "<%= $validation_data %>"
+
+# get current timezone
+$timezone = [string](facter.bat -p timezone)
+
+# check if timezone is set correctly
+if ($timezone -match $CorrectTimeZone) {
+    write-host "PASS: PROFILE::TIMEZONE Current timezone", $timezone, "is equal to", $CorrectTimeZone -ForegroundColor $ConsoleSuccess
+}
+else {
+    write-host "FAIL: PROFILE::TIMEZONE Current timezone", $timezone, "not equal to", $CorrectTimeZone -ForegroundColor $ConsoleError
+}
