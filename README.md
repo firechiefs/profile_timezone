@@ -5,14 +5,20 @@ Sets time zone based on values in hiera
 ## HIERA DATA:
 Determining valid timezones:
 
---> windows: ```'[System.TimeZoneInfo]::GetSystemTimeZones()'```
+Windows:
+```
+[System.TimeZoneInfo]::GetSystemTimeZones()
+```
 
---> RedHat:
-```'ll /usr/share/zoneinfo'```
+RedHat:
+```
+ll /usr/share/zoneinfo
+```
 
 Determining validation timezone:
-
---> ``` 'facter -p hostname' ```
+```
+facter -p hostname
+```
 
 ## HIERA EXAMPLE:
 ```

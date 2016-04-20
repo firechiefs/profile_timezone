@@ -4,7 +4,7 @@
 # make sure to type $validation_data above
 # --> String $validation_data
 
-# variables passed in via profile::timezone
+# variables passed in via PROFILE_TIMEZONE
 console_success="<%= $success_color %>"
 console_error="<%= $error_color %>"
 correct_timezone="<%= $validation_data %>"
@@ -14,7 +14,7 @@ current_timezone=`/bin/date +%Z`
 
 # write results to console
 if [ $current_timezone -ne $correct_timezone ]; then
-  echo -e "$console_error FAIL: PROFILE::TIMEZONE Current timezone $current_timezone not equal to $correct_timezone \e[0m"
+  echo -e "$console_error FAIL: PROFILE_TIMEZONE Current timezone $current_timezone not equal to $correct_timezone \e[0m"
 else
-  echo -e "$console_success PASS: PROFILE::TIMEZONE Current timezone $current_timezone is equal to $correct_timezone \e[0m"
+  echo -e "$console_success PASS: PROFILE_TIMEZONE Current timezone $current_timezone is equal to $correct_timezone \e[0m"
 fi
