@@ -21,6 +21,10 @@
 # puppet module install puppetlabs-dsc
 
 class profile_timezone {
+  # A windows VM that is building for the first time will not have the
+  # necessary foundation to try to apply dsc types for timezone.
+  # require that profile::base completes before this class declaration.
+  require profile::base
   # HIERA LOOKUP:
   # --> PUPPET CODE VARIABLES:
   $timezone            = hiera("profile::timezone.${::osfamily}")
