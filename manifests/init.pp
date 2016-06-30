@@ -36,6 +36,9 @@ class profile_timezone {
   case $::osfamily {
     'RedHat': { class { 'timezone': timezone => $timezone } }
     'windows': {
+      # requires dsc class
+      require profile_dsc
+
       dsc_xtimezone { 'timezone':
         dsc_timezone         => $timezone,
         dsc_issingleinstance => 'Yes',
